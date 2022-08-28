@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class="q-px-sm q-pt-sm" style="background-color:#000;color:white" elevated >
+    <q-header class="q-px-sm q-pt-sm" style="background-color:#f2f2f2;color:black" elevated >
       <q-toolbar>
         <!-- <q-btn
           flat
@@ -13,7 +13,7 @@
         /> -->
 
         <q-toolbar-title class="font-600 font-size-24">
-          NBC Dashboard - Greg G Tan
+          NBC Dashboard 
         </q-toolbar-title>
 
         
@@ -23,7 +23,7 @@
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      content-class="myGrey"
+      style="background-color:#f2f2f2"
      
       :mini="miniState"
         @mouseover="miniState = false"
