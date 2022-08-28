@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class="q-px-sm q-pt-sm" style="background-color:#f2f2f2;color:black" elevated >
+    <q-header class="q-px-sm q-pt-sm" style="background-color:#f2f2f2;color:black" >
       <q-toolbar>
         <!-- <q-btn
           flat
@@ -13,9 +13,9 @@
         /> -->
 
         <q-toolbar-title class="font-600 font-size-24">
-          NBC Dashboard 
+         Cardiff by Goldman Sachs 
         </q-toolbar-title>
-
+        
         
       </q-toolbar>
     </q-header>
@@ -24,18 +24,43 @@
       v-model="leftDrawerOpen"
       show-if-above
       style="background-color:#f2f2f2"
-     
+      :width="250"
+      
       :mini="miniState"
         @mouseover="miniState = false"
         @mouseout="miniState = true"
+      
     >
-      <q-list>
+      <q-list class="q-mt-md">
+
+        <q-item
+        v-for="link in essentialLinks"
+        :key="link.title"
+        v-bind="link"
+        clickable
+        tag="a"
+        :to="link.link"
        
-        <EssentialLink
+        
+      >
+        <q-item-section
+          v-if="link.icon"
+          avatar
+        >
+          <q-icon :name="link.icon" />
+        </q-item-section>
+
+        <q-item-section>
+          <q-item-label>{{ link.title }}</q-item-label>
+          
+        </q-item-section>
+      </q-item>
+       
+        <!-- <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
-        />
+        /> -->
       </q-list>
     </q-drawer>
 
@@ -53,25 +78,19 @@ const linksData = [
     title: 'Dashboard',
     caption: 'quasar.dev',
     icon: 'dashboard',
-    link: '/'
+    link: '/dashboard'
   },
   {
-    title: 'Help',
+    title: 'Cards Managment',
     caption: 'github.com/quasarframework',
-    icon: 'help_outline',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Profile',
-    caption: 'chat.quasar.dev',
-    icon: 'account_circle',
-    link: 'https://chat.quasar.dev'
+    icon: 'credit_card',
+    link: '/cards'
   },
   {
     title: 'Log Out',
     caption: 'forum.quasar.dev',
     icon: 'logout',
-    link: 'https://forum.quasar.dev'
+    link: ''
   },
   
 ]
@@ -87,6 +106,10 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: linksData
     }
+  },
+  mounted(){
+
+    this.$router.push('/dashboard')
   }
 }
 </script>

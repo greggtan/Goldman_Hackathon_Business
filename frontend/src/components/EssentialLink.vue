@@ -2,7 +2,8 @@
   <q-item
     clickable
     tag="a"
-    
+    :to="link"
+    v-close
   >
     <q-item-section
       v-if="icon"
@@ -34,7 +35,7 @@ export default {
 
     link: {
       type: String,
-      default: '#'
+      default: '/'
     },
 
     icon: {
